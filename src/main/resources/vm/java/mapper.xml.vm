@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhzh.mapper.${ClassName}Mapper">
+  <resultMap id="BaseResultMap" type="model.${ClassName}">
+    #foreach( $rsMap in $mapperStr )
+      ${rsMap}
+    #end
+  </resultMap>
+
+  <sql id="Base_Column_List">
+     #foreach( $colName in $mapperCol )
+        ${colName},
+     #end
+  </sql>
+
+  <select id="findById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ${tableName}
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="findList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ${tableName}
+    where delete_status=0
+  </select>
+
+  <update id="deleteById" parameterType="java.lang.Integer">
+    update ${tableName}
+    set delete_status=1
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <insert id="insert" parameterType="model.${ClassName}">
+    insert into ${tableName}
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      #foreach( $ins in $mapperIns )
+          ${ins}
+      #end
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      #foreach( $insV in $mapperInsV )
+          ${insV}
+      #end
+    </trim>
+  </insert>
+
+  <update id="update" parameterType="model.${ClassName}">
+    update ${tableName}
+    <set>
+      #foreach( $up in $mapperUp )
+        ${up}
+      #end
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

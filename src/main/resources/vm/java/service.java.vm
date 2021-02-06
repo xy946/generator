@@ -1,0 +1,34 @@
+package classfile;
+
+import util.PaginationResponse;
+import com.zhzh.util.pagination.PaginationResponse;
+import com.zhzh.model.${ClassName};
+import com.zhzh.model.queryparam.QueryParam;
+
+/**
+ * ${functionName}接口
+ * @author yzc
+ * @date ${date}
+ */
+public interface ${ClassName}Service {
+
+    //新增${functionName}
+    int insert(${ClassName} ${className});
+
+    //修改${functionName}
+    int update(${ClassName} ${className});
+
+    //通过id查看${functionName}
+    ${ClassName} findById(Integer id);
+
+    //条件分页查询${functionName}列表
+    PaginationResponse<${ClassName}> findList(QueryParam param);
+
+    //通过id删除${functionName}信息
+    int deleteById(Integer id);
+
+
+
+
+
+}

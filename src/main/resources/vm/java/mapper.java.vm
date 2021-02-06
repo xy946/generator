@@ -1,0 +1,30 @@
+package classfile;
+
+import org.apache.ibatis.annotations.Param;
+import com.zhzh.model.queryparam.QueryParam;
+import java.util.List;
+import com.zhzh.model.${ClassName};
+
+
+/**
+ * ${functionName}接口
+ * @author yzc
+ * @date ${date}
+ */
+public interface ${ClassName}Mapper {
+
+    //新增${functionName}
+    int insert(${ClassName} ${className});
+
+    //修改${functionName}
+    int update(${ClassName} ${className});
+
+    //通过id查看${functionName}
+    ${ClassName} findById(@Param("id") Integer id);
+
+    //通过id删除${functionName}
+    int deleteById(@Param("id") Integer id);
+
+    //条件分页查询${functionName}
+    List<${ClassName}> findList(QueryParam param);
+}
