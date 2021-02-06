@@ -1,9 +1,9 @@
 package classfile;
 
 import org.apache.ibatis.annotations.Param;
-import com.zhzh.model.queryparam.QueryParam;
+import util.QueryParam;
 import java.util.List;
-import com.zhzh.model.${ClassName};
+import model.${ClassName};
 
 
 /**
@@ -13,18 +13,33 @@ import com.zhzh.model.${ClassName};
  */
 public interface ${ClassName}Mapper {
 
-    //新增${functionName}
+    /**
+     * 新增${functionName}
+     * @return
+     */
     int insert(${ClassName} ${className});
 
-    //修改${functionName}
+    /**
+     * 修改${functionName}
+     * @return
+     */
     int update(${ClassName} ${className});
 
-    //通过id查看${functionName}
+    /**
+     * 通过id查看${functionName}
+     * @return
+     */
     ${ClassName} findById(@Param("id") Integer id);
 
-    //通过id删除${functionName}
+    /**
+     * 通过id删除${functionName}
+     * @return
+     */
     int deleteById(@Param("id") Integer id);
 
-    //条件分页查询${functionName}
+    /**
+     * 条件分页查询${functionName}
+     * @return
+     */
     List<${ClassName}> findList(QueryParam param);
 }

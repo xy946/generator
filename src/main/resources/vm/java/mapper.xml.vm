@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zhzh.mapper.${ClassName}Mapper">
+<mapper namespace="classfile.${ClassName}Mapper">
   <resultMap id="BaseResultMap" type="model.${ClassName}">
     #foreach( $rsMap in $mapperStr )
-      ${rsMap}
+    ${rsMap}
     #end
   </resultMap>
 
   <sql id="Base_Column_List">
      #foreach( $colName in $mapperCol )
-        ${colName},
+    ${colName},
      #end
   </sql>
 
@@ -36,23 +36,23 @@
   <insert id="insert" parameterType="model.${ClassName}">
     insert into ${tableName}
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      #foreach( $ins in $mapperIns )
-          ${ins}
-      #end
+#foreach( $ins in $mapperIns )
+        ${ins}
+#end
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #foreach( $insV in $mapperInsV )
-          ${insV}
-      #end
+#foreach( $insV in $mapperInsV )
+        ${insV}
+#end
     </trim>
   </insert>
 
   <update id="update" parameterType="model.${ClassName}">
     update ${tableName}
     <set>
-      #foreach( $up in $mapperUp )
+#foreach( $up in $mapperUp )
         ${up}
-      #end
+#end
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>

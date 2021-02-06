@@ -2,12 +2,11 @@ package classfile;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.zhzh.util.pagination.PaginationResponse;
-import com.zhzh.model.queryparam.QueryParam;
-import com.zhzh.util.model.ResultVO;
-import com.zhzh.util.model.StatusCode;
-import com.zhzh.model.${ClassName};
-import com.zhzh.service.${ClassName}Service;
+import util.PaginationResponse;
+import util.QueryParam;
+import util.ResultVO;
+import util.StatusCode;
+import model.${ClassName};
 
 /**
  * ${functionName}

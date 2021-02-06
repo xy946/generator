@@ -43,7 +43,6 @@ public class Generator {
         List<String> mapperIns = CommentGenerator.mapperIns;
         List<String> mapperInsV = CommentGenerator.mapperInsV;
         List<String> mapperUp = CommentGenerator.mapperUp;
-        System.out.println("request"+request);
         ClassCreate.generate(path,functionName,ClassName,tableName,className,
                 request,response,mapperStr,mapperCol,mapperIns,mapperInsV,mapperUp);
         //输出警告信息

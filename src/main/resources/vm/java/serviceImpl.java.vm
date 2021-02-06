@@ -8,14 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
-import com.zhzh.constants.Constants;
-import com.zhzh.util.exception.GlobalException;
-import com.zhzh.util.pagination.PaginationResponse;
-import com.zhzh.model.queryparam.QueryParam;
+import util.Constants;
+import util.GlobalException;
+import util.PaginationResponse;
+import util.QueryParam;
 import java.util.List;
-import com.zhzh.model.${ClassName};
-import com.zhzh.service.${ClassName}Service;
-import com.zhzh.mapper.${ClassName}Mapper;
+import model.${ClassName};
 
 /**
  * ${functionName}业务层处理
