@@ -1,9 +1,9 @@
 package classfile;
 
 import org.apache.ibatis.annotations.Param;
-import util.QueryParam;
+import com.zhzh.model.QueryParam;
 import java.util.List;
-import model.${ClassName};
+import com.zhzh.model.${ClassName};
 
 
 /**

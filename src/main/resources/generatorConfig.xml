@@ -55,7 +55,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--生成对应表及类名 tableName填表名  domainObjectName生成实体名称-->
-        <table tableName="department" domainObjectName="Department"
+        <table tableName="commodity" domainObjectName="Commodity"
                enableCountByExample="false" enableUpdateByExample="false" 
                enableDeleteByExample="false" enableSelectByExample="false" 
                selectByExampleQueryId="false">

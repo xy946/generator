@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="classfile.${ClassName}Mapper">
-  <resultMap id="BaseResultMap" type="model.${ClassName}">
+<mapper namespace="com.zhzh.mapper.${ClassName}Mapper">
+  <resultMap id="BaseResultMap" type="com.zhzh.model.${ClassName}">
     #foreach( $rsMap in $mapperStr )
     ${rsMap}
     #end
@@ -24,16 +24,16 @@
     select
     <include refid="Base_Column_List" />
     from ${tableName}
-    where delete_status=0
+    where del_flag=0
   </select>
 
   <update id="deleteById" parameterType="java.lang.Integer">
     update ${tableName}
-    set delete_status=1
+    set del_flag=1
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <insert id="insert" parameterType="model.${ClassName}">
+  <insert id="insert" parameterType="com.zhzh.model.${ClassName}">
     insert into ${tableName}
     <trim prefix="(" suffix=")" suffixOverrides=",">
 #foreach( $ins in $mapperIns )
@@ -47,7 +47,7 @@
     </trim>
   </insert>
 
-  <update id="update" parameterType="model.${ClassName}">
+  <update id="update" parameterType="com.zhzh.model.${ClassName}">
     update ${tableName}
     <set>
 #foreach( $up in $mapperUp )

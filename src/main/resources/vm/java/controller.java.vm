@@ -2,11 +2,12 @@ package classfile;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import util.PaginationResponse;
-import util.QueryParam;
-import util.ResultVO;
-import util.StatusCode;
-import model.${ClassName};
+import com.zhzh.pagination.PaginationResponse;
+import com.zhzh.model.QueryParam;
+import com.zhzh.model.ResultVO;
+import com.zhzh.model.StatusCode;
+import com.zhzh.model.${ClassName};
+import com.zhzh.service.${ClassName}Service;
 
 /**
  * ${functionName}
@@ -14,14 +15,14 @@ import model.${ClassName};
  * @date ${date}
  */
 @RestController
-@RequestMapping("/pc/${className}")
+@RequestMapping("/basicinfo/web/${className}")
 public class ${ClassName}Controller{
 
     @Autowired
     private ${ClassName}Service ${className}Service;
 
     /**
-     * @api {post}  /pc/${className}/insert   新增${functionName}
+     * @api {post}  /basicinfo/web/${className}/insert   新增${functionName}
      * @apiName insert
      * @apiGroup ${functionName}
      * @apiVersion 0.1.0
@@ -57,7 +58,7 @@ public class ${ClassName}Controller{
 
 
     /**
-     * @api {post}  /pc/${className}/update   修改${functionName}
+     * @api {post}  /basicinfo/web/${className}/update   修改${functionName}
      * @apiName update
      * @apiGroup ${functionName}
      * @apiVersion 0.1.0
@@ -93,7 +94,7 @@ public class ${ClassName}Controller{
 
 
     /**
-     * @api {get}  /pc/${className}/findList   条件分页查询${functionName}列表
+     * @api {get}  /basicinfo/web/${className}/findList   条件分页查询${functionName}列表
      * @apiName findList
      * @apiGroup ${functionName}
      * @apiVersion 0.1.0
@@ -138,7 +139,7 @@ public class ${ClassName}Controller{
 
 
     /**
-     * @api {get}  /pc/${className}/findById   通过id查看${functionName}详细信息
+     * @api {get}  /basicinfo/web/${className}/findById   通过id查看${functionName}详细信息
      * @apiName findById
      * @apiGroup ${functionName}
      * @apiVersion 0.1.0
@@ -180,7 +181,7 @@ public class ${ClassName}Controller{
 
 
     /**
-     * @api {get}  /pc/${className}/deleteById     通过id删除${functionName}
+     * @api {get} /basicinfo/web/${className}/deleteById     通过id删除${functionName}
      * @apiName deleteById
      * @apiGroup ${functionName}
      * @apiVersion 0.1.0

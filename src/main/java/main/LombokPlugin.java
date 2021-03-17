@@ -45,8 +45,9 @@ public class LombokPlugin extends PluginAdapter {
 
         //todo 实体添加作者时间
         topLevelClass.addJavaDocLine("/**");
+        topLevelClass.addJavaDocLine("/* 描述:");
         topLevelClass.addJavaDocLine(" * @author : yzc ");
-        topLevelClass.addJavaDocLine(" * @date : "+ date2Str(new Date()));
+        topLevelClass.addJavaDocLine(" * @create : "+ date2Str(new Date()));
         topLevelClass.addJavaDocLine(" **/");
 
         return true;
@@ -66,8 +67,9 @@ public class LombokPlugin extends PluginAdapter {
 
         //todo Mapper添加作者时间
         interfaze.addJavaDocLine("/**");
+        interfaze.addJavaDocLine("/* 描述:");
         interfaze.addJavaDocLine(" * @author : yzc ");
-        interfaze.addJavaDocLine(" * @date : "+ date2Str(new Date()));
+        interfaze.addJavaDocLine(" * @create : "+ date2Str(new Date()));
         interfaze.addJavaDocLine(" **/");
 
         return true;

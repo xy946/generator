@@ -1,9 +1,8 @@
 package classfile;
 
-import util.PaginationResponse;
-import util.PaginationResponse;
-import model.${ClassName};
-import util.QueryParam;
+import com.zhzh.pagination.PaginationResponse;
+import com.zhzh.model.${ClassName};
+import com.zhzh.model.QueryParam;
 
 /**
  * ${functionName}接口

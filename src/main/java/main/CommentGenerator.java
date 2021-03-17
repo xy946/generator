@@ -62,10 +62,10 @@ public class CommentGenerator extends DefaultCommentGenerator {
         ins += "            "+colName+",\n";
         ins += "        </if>";
         String insV = "<if test=\""+name+" != null\">\n";
-        insV += "           "+name+",\n";
+        insV += "           #{"+name+",jdbcType="+jdbcTypeName+"},\n";
         insV += "       </if>";
         String up = "<if test=\""+name+" != null\">\n";
-        up += "         "+colName+" = #{"+name+",jdbcType=VARCHAR},\n";
+        up += "         "+colName+" = #{"+name+",jdbcType="+jdbcTypeName+"},\n";
         up += "     </if>";
         request.add(re);
         response.add(rs);

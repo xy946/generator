@@ -16,10 +16,10 @@ import java.util.List;
 public class Generator {
 
     public static void main(String[] args) throws Exception {
-        String functionName="部门";   //类描述
-        String ClassName="Department";     //类名
-        String className="department";     //类名驼峰
-        String tableName = "department";   //表名
+        String functionName="商品分类";   //类描述
+        String ClassName="Commodity";     //类名
+        String className="commodity";     //类名驼峰
+        String tableName = "commodity";   //表名
         String path="C:\\Users\\Lenovo\\IdeaProjects\\generator\\src\\main\\java\\classfile\\";
         //MBG 执行过程中的警告信息
         List<String> warnings = new ArrayList<String>();
