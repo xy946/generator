@@ -18,9 +18,10 @@ import com.zhzh.service.${ClassName}Service;
 import com.zhzh.mapper.${ClassName}Mapper;
 
 /**
- * ${functionName}业务层处理
+ * 描述:
+ *      ${functionName}
  * @author yzc
- * @date ${date}
+ * @create ${date}
  */
 @Service
 public class ${ClassName}ServiceImpl implements ${ClassName}Service {

@@ -32,7 +32,7 @@ public class Constants {
     //redis  缓存时间
     public  final static int  REDIS_TIME_OUT = 60*30;
 
-    public final static String YYYY_MM_DD = "yyyy-MM-dd";
+    public final static String YYYY_MM_DD = "yyyy-MM-dd HH:mm:ss";
 
     /****************************************************************File相关********************************************************************************************************/
     //文件上传保存路径

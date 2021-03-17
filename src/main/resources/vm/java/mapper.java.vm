@@ -7,9 +7,10 @@ import com.zhzh.model.${ClassName};
 
 
 /**
- * ${functionName}接口
+ * 描述:
+ *      ${functionName}
  * @author yzc
- * @date ${date}
+ * @create ${date}
  */
 public interface ${ClassName}Mapper {
 

@@ -90,7 +90,7 @@ public class LombokPlugin extends PluginAdapter {
     }
 
     private String date2Str(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(date);
     }
 }

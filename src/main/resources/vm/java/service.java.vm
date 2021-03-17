@@ -5,9 +5,10 @@ import com.zhzh.model.${ClassName};
 import com.zhzh.model.QueryParam;
 
 /**
- * ${functionName}接口
+ * 描述:
+ *      ${functionName}
  * @author yzc
- * @date ${date}
+ * @create ${date}
  */
 public interface ${ClassName}Service {
 
