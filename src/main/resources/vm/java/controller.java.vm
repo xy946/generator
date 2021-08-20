@@ -1,13 +1,15 @@
 package classfile;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.zhzh.pagination.PaginationResponse;
-import com.zhzh.model.QueryParam;
-import com.zhzh.model.ResultVO;
-import com.zhzh.model.StatusCode;
-import com.zhzh.model.${ClassName};
-import com.zhzh.service.${ClassName}Service;
+import util.PaginationResponse;
+import util.QueryParam;
+import util.ResultVO;
+import util.StatusCode;
+import model.${ClassName};
+import classfile.${ClassName}Service;
 
 /**
  * 描述:
@@ -15,164 +17,38 @@ import com.zhzh.service.${ClassName}Service;
  * @author yzc
  * @create ${date}
  */
+@Api(tags = "${functionName}",description = "${ClassName}Controller")
 @RestController
-@RequestMapping("/basicinfo/web/${className}")
+@RequestMapping("/xxxxxx/${className}")
 public class ${ClassName}Controller{
 
     @Autowired
     private ${ClassName}Service ${className}Service;
 
-    /**
-     * @api {post}  /basicinfo/web/${className}/insert   新增${functionName}
-     * @apiName insert
-     * @apiGroup ${functionName}
-     * @apiVersion 0.1.0
-     * @apiDescription 新增${functionName}
-     #foreach( $rs in $request )
-* ${rs}
-     #end
-     *
-     * @apiSuccess {String} code 结果码
-     * @apiSuccess {String} msg  消息说明
-     * @apiSuccess {String} rows 数据组合
-     * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 200 OK
-     *	    {
-     *          "code": "200",
-     *          "msg": "SUCCESS",
-     *          "rows": 1
-     *      }
-     *
-     *  @apiErrorExample {json} Error-Response:
-     *  HTTP/1.1 404 Not Found
-     *    {
-     *		"code": "999",
-     *		"msg": "操作失败，异常信息为：参数id不能为空",
-     *	    "rows": ""
-     *	  }
-     */
+    @ApiOperation("新增${functionName}")
     @PostMapping("/insert")
     public ResultVO insert(${ClassName} ${className}) {
         int count = ${className}Service.insert(${className});
         return new ResultVO(StatusCode.RESULT_SUCCESS,count);
     }
 
-
-    /**
-     * @api {post}  /basicinfo/web/${className}/update   修改${functionName}
-     * @apiName update
-     * @apiGroup ${functionName}
-     * @apiVersion 0.1.0
-     * @apiDescription 修改${functionName}
-     #foreach( $rs in $request )
-* ${rs}
-     #end
-     *
-     * @apiSuccess {String} code 结果码
-     * @apiSuccess {String} msg  消息说明
-     * @apiSuccess {String} rows 数据组合
-     * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 200 OK
-     *	    {
-     *          "code": "200",
-     *          "msg": "SUCCESS",
-     *          "rows": 1
-     *      }
-     *
-     *  @apiErrorExample {json} Error-Response:
-     *  HTTP/1.1 404 Not Found
-     *    {
-     *		"code": "999",
-     *		"msg": "操作失败，异常信息为：参数id不能为空",
-     *	    "rows": ""
-     *	  }
-     */
+    @ApiOperation("修改${functionName}")
     @PostMapping("/update")
     public ResultVO update(${ClassName} ${className}) {
         int count = ${className}Service.update(${className});
         return new ResultVO(StatusCode.RESULT_SUCCESS,count);
     }
 
-
-    /**
-     * @api {get}  /basicinfo/web/${className}/findList   条件分页查询${functionName}列表
-     * @apiName findList
-     * @apiGroup ${functionName}
-     * @apiVersion 0.1.0
-     * @apiDescription ${functionName}
-     *
-     * @apiParam {Integer}        pageNum       当前数据页码(必填)
-     * @apiParam {Integer}        pageSize        单页数据量(必填)
-
-     #foreach( $rs in $response )
-* ${rs}
-     #end
-     *
-     * @apiSuccess {Long}         pageDataSize    数据总数
-     * @apiSuccess {String}       pageDataList    数据结果集
-     * @apiSuccess {Integer}      pageNum       当前数据页码
-     * @apiSuccess {Integer}      pageSize        单页数据量
-     * @apiSuccess {Integer}      total        总页数
-     * @apiSuccess {String}       code 结果码
-     * @apiSuccess {String}       msg  消息说明
-     * @apiSuccess {String}       rows 数据组合
-     * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 200 OK
-     *	    {
-     *          "code": "200",
-     *          "msg": "SUCCESS",
-     *          "rows": 1
-     *      }
-     *
-     *  @apiErrorExample {json} Error-Response:
-     *  HTTP/1.1 404 Not Found
-     *    {
-     *		"code": "999",
-     *		"msg": "操作失败，异常信息为：参数id不能为空",
-     *	    "rows": ""
-     *	  }
-     */
+    @ApiOperation("条件分页查询${functionName}列表")
     @GetMapping("/findList")
     public ResultVO findList(QueryParam param){
         PaginationResponse<${ClassName}> response = ${className}Service.findList(param);
         return new ResultVO(StatusCode.RESULT_SUCCESS,response);
     }
 
-
-    /**
-     * @api {get}  /basicinfo/web/${className}/findById   通过id查看${functionName}详细信息
-     * @apiName findById
-     * @apiGroup ${functionName}
-     * @apiVersion 0.1.0
-     * @apiDescription 通过id查看${functionName}详细信息
-     *
-     * @apiParam {Integer}        id              主键id(必填)
-     *
-     #foreach( $rs in $response )
-* ${rs}
-     #end
-     *
-     * @apiSuccess {String} code 结果码
-     * @apiSuccess {String} msg  消息说明
-     * @apiSuccess {String} rows 数据组合
-     * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 200 OK
-     *	    {
-     *          "code": "200",
-     *          "msg": "SUCCESS",
-     *          "rows": 1
-     *      }
-     *
-     *  @apiErrorExample {json} Error-Response:
-     *  HTTP/1.1 404 Not Found
-     *    {
-     *		"code": "999",
-     *		"msg": "操作失败，异常信息为：参数id不能为空",
-     *	    "rows": ""
-     *	  }
-     */
+    @ApiOperation("通过id查看${functionName}详细信息")
     @GetMapping("/findById")
-    public ResultVO getInfo(Integer id) {
+    public ResultVO getInfo(Long id) {
         ${ClassName} ${className} = ${className}Service.findById(id);
         if(${className}==null){
             return new ResultVO(StatusCode.DATA_NULL);
@@ -180,37 +56,9 @@ public class ${ClassName}Controller{
         return new ResultVO(StatusCode.RESULT_SUCCESS,${className});
     }
 
-
-    /**
-     * @api {get} /basicinfo/web/${className}/deleteById     通过id删除${functionName}
-     * @apiName deleteById
-     * @apiGroup ${functionName}
-     * @apiVersion 0.1.0
-     * @apiDescription 通过id删除${functionName}
-     *
-     * @apiParam   {Integer}       id            id(必填)
-     *
-     * @apiSuccess {String} code 结果码
-     * @apiSuccess {String} msg  消息说明
-     * @apiSuccess {String} rows 数据组合
-     * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 200 OK
-     *	    {
-     *          "code": "200",
-     *          "msg": "SUCCESS",
-     *          "rows": 1
-     *      }
-     *
-     *  @apiErrorExample {json} Error-Response:
-     *  HTTP/1.1 404 Not Found
-     *    {
-     *		"code": "999",
-     *		"msg": "操作失败，异常信息为：参数id不能为空",
-     *	    "rows": ""
-     *	  }
-     */
+    @ApiOperation("通过id删除${functionName}")
     @GetMapping("/deleteById")
-    public ResultVO deleteById(Integer id) {
+    public ResultVO deleteById(Long id) {
         int count = ${className}Service.deleteById(id);
         if(count==0){
             return new ResultVO(StatusCode.OPERA_DATA_NULL);

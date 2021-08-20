@@ -33,14 +33,17 @@ public class LombokPlugin extends PluginAdapter {
 //        topLevelClass.addImportedType("lombok.NoArgsConstructor");
         topLevelClass.addImportedType("lombok.Data");
         topLevelClass.addImportedType("com.fasterxml.jackson.annotation.JsonFormat");
-        topLevelClass.addImportedType("javax.validation.constraints.NotBlank");
-        topLevelClass.addImportedType("javax.validation.constraints.NotNull");
+        //topLevelClass.addImportedType("javax.validation.constraints.NotBlank");
+       // topLevelClass.addImportedType("javax.validation.constraints.NotNull");
+        topLevelClass.addImportedType("io.swagger.annotations.ApiModel");
+        topLevelClass.addImportedType("io.swagger.annotations.ApiModelProperty");
         //topLevelClass.addImportedType("org.apache.solr.client.solrj.beans.Field");  //solr注解导包
 
 
         //todo 实体添加注解信息
 //        topLevelClass.addAnnotation("@AllArgsConstructor");
 //        topLevelClass.addAnnotation("@NoArgsConstructor");
+        topLevelClass.addAnnotation("@ApiModel(\"\")");
         topLevelClass.addAnnotation("@Data");
 
         //todo 实体添加作者时间

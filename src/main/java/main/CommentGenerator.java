@@ -55,8 +55,6 @@ public class CommentGenerator extends DefaultCommentGenerator {
         String name = field.getName();                                  //实体类名
         String shortName = field.getType().getShortName();              //实体类类型
 
-        String re = "@apiParam     {" + shortName + "}      " + name + "       " + remarks;
-        String rs = "@apiSuccess     {" + shortName + "}      " + name + "       " + remarks;
         String rsMap = "<result column=\""+colName+"\" jdbcType=\""+jdbcTypeName+"\" property=\""+name+"\" />";
         String ins = "<if test=\""+name+" != null\">\n";
         ins += "            "+colName+",\n";
@@ -67,8 +65,6 @@ public class CommentGenerator extends DefaultCommentGenerator {
         String up = "<if test=\""+name+" != null\">\n";
         up += "         "+colName+" = #{"+name+",jdbcType="+jdbcTypeName+"},\n";
         up += "     </if>";
-        request.add(re);
-        response.add(rs);
         mapperStr.add(rsMap);
         mapperCol.add(colName);
         mapperIns.add(ins);
@@ -76,24 +72,11 @@ public class CommentGenerator extends DefaultCommentGenerator {
         mapperUp.add(up);
 
         if (addRemarkComments && StringUtility.stringHasValue(remarks)) {
-            addFieldJavaDoc(field, remarks);
+            addFieldJavaDoc(field, remarks,jdbcTypeName);
             //数据库中特殊字符需要转义
             if (remarks.contains("\"")) {
                 remarks = remarks.replace("\"", "'");
             }
-
-            //todo 给model的字段添加swagger注解 swagger二选一  格式例: @ApiModelProperty(value = "确认收货时间" ,example = "")
-            //Object example = setExample(jdbcTypeName, remarks);
-            //field.addJavaDocLine("@ApiModelProperty(value = \"" + remarks + "\" ,example = \"" + example + "\")");
-            field.addJavaDocLine("/**");
-            field.addJavaDocLine( "*" + remarks);
-            field.addJavaDocLine( "*/");
-
-            //todo 给model的字段添加swagger注解 swagger二选一  格式例: @ApiModelProperty(value = "确认收货时间")
-            //field.addJavaDocLine("@ApiModelProperty(value = \"" + remarks + "\" )");
-
-            //todo solr注解
-//            field.addJavaDocLine("@Field( \""+ field.getName() + "\")");
 
             //todo 为date类型字段自动添加@JsonFormat 注解
             if (jdbcTypeName.equals("TIMESTAMP") || jdbcTypeName.equals("TIME")) {
@@ -117,7 +100,7 @@ public class CommentGenerator extends DefaultCommentGenerator {
     /**
      * todo 给model的字段添加注释 例://订单id 注释格式二选一
      */
-    private void addFieldJavaDoc(Field field, String remarks) {
+    private void addFieldJavaDoc(Field field, String remarks,String jdbcTypeName) {
         //todo 给model的字段添加注释 例://订单id
 //        String[] remarkLines=remarks.split(System.getProperty("line.separator"));//换行
 //        field.addJavaDocLine("//"+remarkLines[0]);
@@ -128,6 +111,9 @@ public class CommentGenerator extends DefaultCommentGenerator {
 //        String[] remarkLines=remarks.split(System.getProperty("line.separator"));//换行
 //        field.addJavaDocLine(" * "+remarkLines[0]);
 //        field.addJavaDocLine(" */");
+        //todo 给model的字段添加swagger注解 swagger二选一  格式例: @ApiModelProperty(value = "确认收货时间" ,example = "")
+        Object example = setExample(jdbcTypeName, remarks);
+        field.addJavaDocLine("@ApiModelProperty(value = \"" + remarks + "\" ,example = \"" + example + "\")");
     }
 
     @Override

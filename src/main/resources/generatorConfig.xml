@@ -55,13 +55,12 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--生成对应表及类名 tableName填表名  domainObjectName生成实体名称-->
-        <table tableName="commodity" domainObjectName="Commodity"
-               enableCountByExample="false" enableUpdateByExample="false" 
+        <table tableName="test_user" domainObjectName="TestUser"
+               enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" 
                selectByExampleQueryId="false">
             <!--添加此配置: 不使用默认驼峰格式-->
             <!--<property name="useActualColumnNames" value="true"/>-->
-
             <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         </table>
     </context>

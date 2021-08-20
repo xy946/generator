@@ -1,8 +1,8 @@
 package classfile;
 
-import com.zhzh.pagination.PaginationResponse;
-import com.zhzh.model.${ClassName};
-import com.zhzh.model.QueryParam;
+import util.PaginationResponse;
+import model.${ClassName};
+import util.QueryParam;
 
 /**
  * 描述:
@@ -14,33 +14,37 @@ public interface ${ClassName}Service {
 
     /**
      * 新增${functionName}
-     *
-     * @return int
+     * @param ${className}
+     * @return
      */
     int insert(${ClassName} ${className});
 
     /**
      * 修改${functionName}
-     * @return int
+     * @param ${className}
+     * @return
      */
     int update(${ClassName} ${className});
 
     /**
      * 通过id查看${functionName}
+     * @param id
      * @return
      */
-    ${ClassName} findById(Integer id);
+    ${ClassName} findById(Long id);
 
     /**
      * 条件分页查询${functionName}列表
+     * @param param
      * @return
      */
     PaginationResponse<${ClassName}> findList(QueryParam param);
 
     /**
      * 通过id删除${functionName}
+     * @param id
      * @return
      */
-    int deleteById(Integer id);
+    int deleteById(Long id);
 
 }

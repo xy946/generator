@@ -8,14 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
-import com.zhzh.config.Constants;
-import com.zhzh.model.GlobalException;
-import com.zhzh.pagination.PaginationResponse;
-import com.zhzh.model.QueryParam;
+import util.Constants;
+import util.GlobalException;
+import util.PaginationResponse;
+import util.QueryParam;
 import java.util.List;
-import com.zhzh.model.${ClassName};
-import com.zhzh.service.${ClassName}Service;
-import com.zhzh.mapper.${ClassName}Mapper;
+import model.${ClassName};
+import classfile.${ClassName}Service;
+import classfile.${ClassName}Mapper;
 
 /**
  * 描述:
@@ -35,7 +35,7 @@ public class ${ClassName}ServiceImpl implements ${ClassName}Service {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public int insert(${ClassName} ${className}) {
-        check${ClassName}(${className}, Constants.METHOD_ADD);
+        log.info("新增${functionName}请求成功 ==>>参数为 ==>>> {}",${className});
         int count = ${className}Mapper.insert(${className});
         log.info("新增${functionName}请求成功 ==>>返回结果 ==>>> {}",count);
         return count;
@@ -45,7 +45,7 @@ public class ${ClassName}ServiceImpl implements ${ClassName}Service {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public int update(${ClassName} ${className}) {
-        check${ClassName}(${className}, Constants.METHOD_UPDATE);
+        log.info("修改${functionName}请求成功 ==>>参数为 ==>>> {}",${className});
         int count = ${className}Mapper.update(${className});
         log.info("修改${functionName}请求成功 ==>>返回结果 ==>>> {}",count);
         return count;
@@ -53,9 +53,8 @@ public class ${ClassName}ServiceImpl implements ${ClassName}Service {
 
     //通过id查看${functionName}
     @Override
-    public ${ClassName} findById(Integer id) {
+    public ${ClassName} findById(Long id) {
         log.info("进入通过id查看${functionName} ==>> 参数id为==>>> {}",id);
-        check${ClassName}(id, Constants.METHOD_INFO);
         ${ClassName} ${className} = ${className}Mapper.findById(id);
         log.info("通过id查看${functionName}请求成功 ==>> 返回结果为==>>> {}",${className}==null? null:${className}.toString());
         return ${className};
@@ -64,9 +63,8 @@ public class ${ClassName}ServiceImpl implements ${ClassName}Service {
     //通过id删除${functionName}
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public int deleteById(Integer id) {
+    public int deleteById(Long id) {
         log.info("进入通过id删除${functionName} ==>> 参数id为==>>> {}",id);
-        check${ClassName}(id, Constants.METHOD_DEL);
         int count = ${className}Mapper.deleteById(id);
         log.info("通过id删除${functionName}请求成功 ==>> 返回结果为==>>> {}",count);
         return count;
@@ -75,7 +73,6 @@ public class ${ClassName}ServiceImpl implements ${ClassName}Service {
     //条件分页查询${functionName}
     @Override
     public PaginationResponse<${ClassName}> findList(QueryParam param) {
-        check${ClassName}(param, Constants.METHOD_LIST);
         log.info("进入条件分页查询${functionName} ==>> 参数param为==>>> {}",param.toString());
         Page<Object> page = PageHelper.startPage(param.getPageNum(), param.getPageSize(), true);
         List<${ClassName}> ${className}List=${className}Mapper.findList(param);
@@ -84,44 +81,4 @@ public class ${ClassName}ServiceImpl implements ${ClassName}Service {
         log.info("条件分页查询${functionName}请求成功 ==>> 返回结果为==>>> {}",response==null? null:response.toString());
         return response;
     }
-
-    //根据请求类型效验参数
-    private void check${ClassName}(QueryParam param, String type) {
-        if(type.equals(Constants.METHOD_LIST)) { //查询列表
-
-        }
-    }
-
-    //根据请求类型效验参数
-    private void check${ClassName}(${ClassName} ${className}, String type) {
-        if(${className}==null){
-            throw new GlobalException(Constants.PARAM_ERROR,"${className}不能为空");
-        }
-        if(type.equals(Constants.METHOD_ADD)){ //新增
-            log.info("进入新增${functionName} ==>> 参数${className}为==>>> {}",${className}.toString());
-            if(StringUtils.isEmpty(${className}.getCreateUser())){
-                throw new GlobalException(Constants.PARAM_ERROR,"创建人 createUser 不能为空");
-            }
-            log.info("新增${functionName}参数校验通过");
-        }else if(type.equals(Constants.METHOD_UPDATE)){ //修改
-            log.info("进入修改${functionName} ==>>参数${className}为==>>> {}",${className}.toString());
-            if(StringUtils.isEmpty(${className}.getId())){
-                throw new GlobalException(Constants.PARAM_ERROR,"主键 id 不能为空");
-            }
-            if(StringUtils.isEmpty(${className}.getUpdateUser())){
-                throw new GlobalException(Constants.PARAM_ERROR,"修改人 updateUser 不能为空");
-            }
-            log.info("修改${functionName}参数校验通过");
-        }
-    }
-
-    //根据请求类型效验参数
-    private void check${ClassName}(Integer id, String type) {
-        if(type.equals(Constants.METHOD_DEL)||type.equals(Constants.METHOD_INFO)) { //删除和查询单条
-            if(id==null||id<=0){
-                throw new GlobalException(Constants.PARAM_ERROR,"参数 id 不能为空或者小于0");
-            }
-        }
-    }
-    
 }
